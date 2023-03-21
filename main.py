@@ -1,4 +1,3 @@
-import re
 from decimal import *
 import numpy as np
 import sys
@@ -23,3 +22,12 @@ print(f'Recebi {val1:.6f} {op} {val2:.6f} e resultado deu {result}')
 print(f'val1 = {np.binary_repr(np.float32(val1).view(np.uint32))} = {val1}')
 print(f'val2 = {np.binary_repr(np.float32(val2).view(np.uint32))} = {val2}')
 print(f'res  = {np.binary_repr(np.float32(result).view(np.uint32))} = {result}')
+
+context = getcontext().flags
+print(context)
+
+# print(f'Exeção FE_INEXACT: {}')
+# print(f'Exeção FE_DIVBYZERO: {}')
+# print(f'Exeção FE_UNDERFLOW: {}')
+# print(f'Exeção FE_OVERFLOW: {}')
+# print(f'Exeção FE_INVALID: {}')
