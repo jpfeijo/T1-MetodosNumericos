@@ -1,18 +1,20 @@
 from decimal import *
 import numpy as np
 import sys
-#pack and unpack -> 
-#   extended content set context
 
-def expression_result(value_1, value_2, operator):
-  if operator == '+': return value_1 + value_2
-  elif operator == '-': return value_1 - value_2
-  elif operator == '*': return value_1 * value_2
-  elif operator == '/': return value_1 / value_2
+def expression_result(val1, val2, op):
+  if op == '+': return val1 + val2
+  elif op == '-': return val1 - val2
+  elif op == '*': return val1 * val2
+  elif op == '/': return val1 / val2
 
 expression = ' '.join(sys.argv[1:])
 
 val1, op, val2 =  expression.split(' ')
+
+setcontext(ExtendedContext)
+getcontext().Emax = 38
+getcontext().Emin = -38
 
 val1 = Decimal(val1)
 val2 = Decimal(val2)
@@ -26,8 +28,8 @@ print(f'res  = {np.binary_repr(np.float32(result).view(np.uint32))} = {result}')
 context = getcontext().flags
 print(context)
 
-# print(f'Exeção FE_INEXACT: {}')
-# print(f'Exeção FE_DIVBYZERO: {}')
-# print(f'Exeção FE_UNDERFLOW: {}')
-# print(f'Exeção FE_OVERFLOW: {}')
-# print(f'Exeção FE_INVALID: {}')
+print(f'Exeção FE_INEXACT: {context.get(Inexact)}')
+print(f'Exeção FE_DIVBYZERO: {context.get(DivisionByZero)}')
+print(f'Exeção FE_UNDERFLOW: {context.get(Underflow)}')
+print(f'Exeção FE_OVERFLOW: {context.get(Overflow)}')
+print(f'Exeção FE_INVALID: {context.get(InvalidOperation)}')
