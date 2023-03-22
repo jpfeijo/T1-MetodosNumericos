@@ -26,7 +26,6 @@ print(f'val2 = {np.binary_repr(np.float32(val2).view(np.uint32))} = {val2}')
 print(f'res  = {np.binary_repr(np.float32(result).view(np.uint32))} = {result}')
 
 context = getcontext().flags
-print(context)
 
 print(f'Exeção FE_INEXACT: {context.get(Inexact)}')
 print(f'Exeção FE_DIVBYZERO: {context.get(DivisionByZero)}')
