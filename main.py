@@ -9,11 +9,13 @@ def expression_result(val1, val2, op):
   elif op == '/': return val1 / val2
 
 def print_binary_ieee754(num_bin, num):
-  num_str = str(num_bin)
+  num_bin_str = str(num_bin)
+  if len(num_bin_str) < 32:
+    num_bin_str = "{:0>31}".format(num_bin_str)
   if str(num)[0] == '-':
-    return f'{num_str[0]} {num_str[1:9]} {num_str[9:]}'
+    return f'{num_bin_str[0]} {num_bin_str[1:9]} {num_bin_str[9:]}'
   else:
-    return f'{0} {num_str[0:8]} {num_str[8:]}'
+    return f'{0} {num_bin_str[0:8]} {num_bin_str[8:]}'
 
 expression = ' '.join(sys.argv[1:])
 
